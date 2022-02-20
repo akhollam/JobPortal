@@ -29,14 +29,22 @@ public final class CandidateServiceImpl implements CandidateService {
 		this.candidatedb.add(candidate);
 	}
 
-	public Candidate findById(int id) {
-		return null;
+	public Optional<Candidate> findById(String id) {
+		return candidatedb.stream().filter(candidate -> {
+			return candidate.getId().equals(id);
+		}).findAny();
 	}
 
 	public Optional<Candidate> findByUsernameAndPassword(final String username, final String password) {
+		
 		return candidatedb.stream().filter(candidate -> {
 			return candidate.getUsername().equals(username) && candidate.getPassword().equals(password);
 		}).findAny();
+	}
+
+	@Override
+	public void deleteById(String cId) {
+		// delete from candidatedb
 	}
 
 }
