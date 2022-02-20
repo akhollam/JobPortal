@@ -41,6 +41,7 @@ public class RegisterServlet extends HttpServlet {
 		
 		String password = request.getParameter("password");
 		String confirmPassword = request.getParameter("confirmPassword");
+		
 		if(!password.equals(confirmPassword)) {
 			response.sendRedirect("register.jsp?error=passmismatched");
 			return;

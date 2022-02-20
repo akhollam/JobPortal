@@ -1,7 +1,9 @@
 package com.jobportal.model;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 public class Candidate extends User {
 
@@ -14,7 +16,9 @@ public class Candidate extends User {
 	private Set<Skills> skills;
 	
 	public Candidate() {
-		this.skills = new HashSet<Skills>();
+		this.id = UUID.randomUUID().toString();
+		this.skills = new HashSet<>();
+		this.skills.addAll(Arrays.asList(Skills.values()));
 	}
 
 	public String getFirstName() {

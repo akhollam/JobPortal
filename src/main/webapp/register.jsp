@@ -13,8 +13,13 @@
 
 	<h3>Register on JobPortal for Free</h3>
 	<hr />
+	
 	<c:if test="${param.registered != null}">
 		<h5 style="color: green">You have been registered successfully.</h5>
+	</c:if>
+	
+	<c:if test="${param.deleted != null}">
+		<h5 style="color: green">Good Bye ! Your account has been deleted successfully.</h5>
 	</c:if>
 	
 	<c:if test="${param.error eq 'passmismatched'}">
@@ -60,6 +65,9 @@
 		<input required="required" type="password" name="confirmPassword">
 		<br />
 
+		Address : 
+		<textarea rows="4" cols="100" name="address"></textarea><br />
+		
 		<input type="checkbox" value="termsAndCondition" >
 			By clicking Register, you agree to the Terms and Conditions & Privacy Policy 
 		<br />
