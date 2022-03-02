@@ -84,7 +84,12 @@ public class ProfileServlet extends HttpServlet {
 
 		if (candidate.isPresent()) {
 
-			String[] skills = request.getParameterValues("mySkills");
+			String[] skills = {};
+			
+			String[] skillParam = request.getParameterValues("mySkills");
+			if(skillParam != null) {
+				skills = skillParam;
+			}
 
 			Candidate candidateRec = candidate.get();
 			candidateRec.setFirstName(request.getParameter("firstName"));
@@ -98,6 +103,7 @@ public class ProfileServlet extends HttpServlet {
 			session.setAttribute("user", candidateRec);
 
 			request.getRequestDispatcher("/profile.jsp?updated=true").forward(request, response);
+			return;
 		}
 
 		response.sendRedirect("notfound.jsp");

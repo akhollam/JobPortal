@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jobportal.model.Candidate;
 import com.jobportal.service.CandidateService;
+import com.jobportal.service.impl.CandidateServiceDBImpl;
 import com.jobportal.service.impl.CandidateServiceImpl;
 
 public class RegisterServlet extends HttpServlet {
@@ -30,7 +31,7 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		CandidateService candidateService = CandidateServiceImpl.getInstance();
+		CandidateService candidateService = CandidateServiceDBImpl.getInstance();
 		Candidate candidate = new Candidate();
 		candidate.setFirstName(request.getParameter("firstName"));
 		candidate.setMiddleName(request.getParameter("middleName"));
