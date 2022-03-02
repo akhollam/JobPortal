@@ -7,6 +7,9 @@ import java.util.Optional;
 import com.jobportal.model.Candidate;
 import com.jobportal.service.CandidateService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public final class CandidateServiceImpl implements CandidateService {
 
 	private final List<Candidate> candidatedb;
@@ -36,7 +39,9 @@ public final class CandidateServiceImpl implements CandidateService {
 	}
 
 	public Optional<Candidate> findByUsernameAndPassword(final String username, final String password) {
-		
+
+		log.debug("findByUsernameAndPassword method called for username - {} & {}", username, password);
+
 		return candidatedb.stream().filter(candidate -> {
 			return candidate.getUsername().equals(username) && candidate.getPassword().equals(password);
 		}).findAny();
@@ -44,7 +49,6 @@ public final class CandidateServiceImpl implements CandidateService {
 
 	@Override
 	public void deleteById(String cId) {
-		// delete from candidatedb
 	}
 
 }
